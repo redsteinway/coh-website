@@ -14,9 +14,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: |
+          mkdir -p dist
+          cp -r index.html assets dist/
+          cp -r screenshot-*.png dist/
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: . # デプロイするフォルダ
+          folder: dist # デプロイするフォルダ
           branch: gh-pages # デプロイ先のブランチ
           clean: true # デプロイ前に古いファイルを削除 
