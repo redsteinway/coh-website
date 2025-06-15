@@ -5,40 +5,644 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ALM‑01 Leverless Arcade Controller | Official Landing Page</title>
     <meta name="description" content="最速入力を実現するオールアルミレバーレスコントローラー ALM‑01 の公式ランディングページ" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+    <meta name="keywords" content="レバーレスコントローラー, アーケードコントローラー, ストリートファイター6, EVO, 格闘ゲーム, GP2040-CE, PWS Blaze, オールアルミケース" />
+    <meta property="og:title" content="ALM‑01 Leverless Arcade Controller" />
+    <meta property="og:description" content="最速入力を実現するオールアルミレバーレスコントローラー ALM‑01 の公式ランディングページ" />
+    <meta property="og:image" content="/coh-website/assets/main-img.png" />
+    <meta property="og:type" content="website" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="/coh-website/assets/main-img.png" />
-    <style>[x-cloak]{display:none}</style>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/coh-website/assets/global.css">
   </head>
   <body class="bg-[#0e0e0f] text-white antialiased">
+    <!-- フローティング UI レイヤー -->
+    <div id="ui-layer">
+      <button id="backToTop" aria-label="ページ最上部へ戻る" class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- グローバルナビゲーション -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md border-b border-[#222]">
+      <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-3">
+        <div class="flex items-center gap-2">
+          <a href="index.html" class="text-[#00fff7] font-extrabold text-2xl tracking-widest" style="font-family: 'Orbitron', 'Inter', 'Noto Sans JP', sans-serif;">C.O.H.</a>
+        </div>
+        <ul class="hidden md:flex gap-8 text-base font-semibold">
+          <li><a href="#features" class="hover:text-[#00ff9d] transition">特徴</a></li>
+          <li><a href="#specs" class="hover:text-[#00ff9d] transition">仕様</a></li>
+          <li><a href="#setup" class="hover:text-[#00ff9d] transition">セットアップ</a></li>
+          <li><a href="#voice" class="hover:text-[#00ff9d] transition">ユーザーの声</a></li>
+          <li><a href="#faq" class="hover:text-[#00ff9d] transition">FAQ</a></li>
+          <li><a href="#coh" class="hover:text-[#00ff9d] transition">C.O.H.について</a></li>
+        </ul>
+        <a href="#buy" class="hidden md:inline-block px-5 py-2 rounded-lg font-bold neon-button" style="background:rgba(0,255,157,0.10); color:#00ff9d; border:1.5px solid #00ff9d;">購入する</a>
+        <!-- ハンバーガーメニュー（モバイル用） -->
+        <button id="menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 text-[#00fff7] focus:outline-none" aria-label="メニューを開く">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+      <!-- モバイルメニュー（ドロワー型） -->
+      <div id="mobile-menu" class="absolute top-16 right-4 w-56 bg-black/95 rounded-xl shadow-lg border border-[#222] z-50 p-4 hidden animate-fadeIn">
+        <ul class="flex flex-col gap-4 text-base font-bold">
+          <li><a href="#features" class="menu-link block px-2 py-2 rounded hover:bg-[#00ff9d]/10 transition">特徴</a></li>
+          <li><a href="#specs" class="menu-link block px-2 py-2 rounded hover:bg-[#00ff9d]/10 transition">仕様</a></li>
+          <li><a href="#setup" class="menu-link block px-2 py-2 rounded hover:bg-[#00ff9d]/10 transition">セットアップ</a></li>
+          <li><a href="#voice" class="menu-link block px-2 py-2 rounded hover:bg-[#00ff9d]/10 transition">ユーザーの声</a></li>
+          <li><a href="#faq" class="menu-link block px-2 py-2 rounded hover:bg-[#00ff9d]/10 transition">FAQ</a></li>
+          <li><a href="#coh" class="menu-link block px-2 py-2 rounded hover:bg-[#00ff9d]/10 transition">C.O.H.について</a></li>
+          <li><a href="#buy" class="menu-link block mt-2 px-4 py-2 rounded-lg font-bold neon-button text-center" style="background:rgba(0,255,157,0.10); color:#00ff9d; border:1.5px solid #00ff9d;">購入する</a></li>
+        </ul>
+      </div>
+    </header>
+
     <!-- Hero Header -->
-    <!-- TODO: Inject full hero section here -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+      <video class="absolute inset-0 w-full h-full object-cover z-0" src="./assets/hero-bg.mp4" autoplay loop muted playsinline></video>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-black/40 z-10"></div>
+      <div class="relative z-20 flex flex-col md:flex-row items-center justify-center w-full h-full px-4 md:px-16 gap-8 md:gap-20">
+        <!-- 左：テキスト＆ボタン -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
+          <h1 class="text-5xl md:text-6xl font-extrabold mb-4 hero-text" style="letter-spacing:0.04em;" data-aos="fade-right">ALM-01</h1>
+          <p class="text-2xl md:text-3xl font-semibold mb-4 gradient-text" data-aos="fade-right" data-aos-delay="100">精密。静寂。スタイル。</p>
+          <p class="text-base md:text-lg mb-8 text-gray-200 max-w-lg" data-aos="fade-right" data-aos-delay="200">
+            C.O.H.による手作りの逸品。フルアルミニウムボディと超静音入力を備え、究極のゲーミング体験を実現します。
+          </p>
+          <div class="flex gap-4 justify-center md:justify-start" data-aos="fade-right" data-aos-delay="300">
+            <a href="#features" class="px-6 py-3 rounded-lg font-bold neon-button" style="background:rgba(0,255,157,0.08); color:#00ff9d; border:1.5px solid #00ff9d;">特徴を見る</a>
+            <a href="#reserve" class="px-6 py-3 rounded-lg font-bold neon-button" style="background:rgba(255,0,255,0.08); color:#ff00e6; border:1.5px solid #ff00e6;">予約注文する</a>
+          </div>
+        </div>
+        <!-- 右：商品画像 -->
+        <div class="w-full md:w-1/2 flex justify-center items-center">
+          <img src="./assets/main-img.png" alt="ALM-01 商品画像" class="w-full md:max-w-3xl drop-shadow-2xl neon-glow" data-aos="zoom-in" />
+        </div>
+      </div>
+      <div class="scroll-indicator z-30">
+        <svg class="w-6 h-6 text-[#00ff9d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+    </header>
+
+    <!-- 製品の特徴セクション -->
+    <section id="features" class="py-20 px-4 md:px-0 relative overflow-hidden" style="background: url('assets/bg-01.png') center center / cover no-repeat;">
+      <div class="absolute inset-0 bg-black/20 pointer-events-none" aria-hidden="true"></div>
+      <div class="relative z-10">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 section-title" style="color:#00fff7;">Features</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <!-- 1 -->
+            <div class="bg-[#181c24] rounded-xl p-6 flex flex-col items-center shadow-lg feature-card">
+              <div class="mb-4 text-4xl text-[#00fff7]">
+                <!-- ShieldCheckIcon -->
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7.5 4.5v5.25c0 5.25-3.75 9-7.5 10.5-3.75-1.5-7.5-5.25-7.5-10.5V7.5L12 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 12.75l1.5 1.5 3-3"/></svg>
+              </div>
+              <h3 class="font-bold text-base mb-2">フルアルミニウム筐体</h3>
+              <p class="text-sm text-gray-300 text-center">高級アルミニウムボディにより、長時間のプレイでも冷静性と強度、耐久性と洗練されたプロフェッショナルな美しさを実現。</p>
+            </div>
+            <!-- 2 -->
+            <div class="bg-[#181c24] rounded-xl p-6 flex flex-col items-center shadow-lg feature-card">
+              <div class="mb-4 text-4xl text-[#00fff7]">
+                <!-- SpeakerWaveIcon -->
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25v7.5M18.364 5.636a9 9 0 010 12.728M21.192 2.808a13.5 13.5 0 010 18.384"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 9v6H5.25A2.25 2.25 0 013 12.75v-1.5A2.25 2.25 0 015.25 9H9zm0 0V6.75A2.25 2.25 0 0111.25 4.5h1.5A2.25 2.25 0 0115 6.75V9"/></svg>
+              </div>
+              <h3 class="font-bold text-base mb-2">静音PWS Blazeボタン</h3>
+              <p class="text-sm text-gray-300 text-center">Punk Workshop Japan製の超高性能ボタンを採用。触感フィードバックと静音性で快適な操作感。</p>
+            </div>
+            <!-- 3 -->
+            <div class="bg-[#181c24] rounded-xl p-6 flex flex-col items-center shadow-lg feature-card">
+              <div class="mb-4 text-4xl text-[#00fff7]">
+                <!-- CpuIcon -->
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M3 9v6m18-6v6M9 3h6m-6 18h6"/></svg>
+              </div>
+              <h3 class="font-bold text-base mb-2">GP2040-CE搭載</h3>
+              <p class="text-sm text-gray-300 text-center">Xinputサポートと完全設定可能なSOCDクリーニングを備えた先進的なファームウェアで、精密な入力制御を実現。</p>
+            </div>
+            <!-- 4 -->
+            <div class="bg-[#181c24] rounded-xl p-6 flex flex-col items-center shadow-lg feature-card">
+              <div class="mb-4 text-4xl text-[#00fff7]">
+                <!-- LayoutIcon -->
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/></svg>
+              </div>
+              <h3 class="font-bold text-base mb-2">人間工学に基づいたレイアウト</h3>
+              <p class="text-sm text-gray-300 text-center">ミュージシャン/格闘ゲーマーによって設計された、左手の小指まで活用する独自のレイアウトで、長時間の快適なプレイを実現。</p>
+            </div>
+            <!-- 5 -->
+            <div class="bg-[#181c24] rounded-xl p-6 flex flex-col items-center shadow-lg feature-card">
+              <div class="mb-4 text-4xl text-[#00fff7]">
+                <!-- UsbIcon -->
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="6" rx="2"/><rect x="9" y="16" width="6" height="6" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8"/></svg>
+              </div>
+              <h3 class="font-bold text-base mb-2">USB-C接続</h3>
+              <p class="text-sm text-gray-300 text-center">最新のUSB-C接続により、信頼性の高い高速入力が広範な互換性を実現。</p>
+            </div>
+            <!-- 6 -->
+            <div class="bg-[#181c24] rounded-xl p-6 flex flex-col items-center shadow-lg feature-card">
+              <div class="mb-4 text-4xl text-[#00fff7]">
+                <!-- BriefcaseIcon -->
+                <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M16 3v4M8 3v4"/></svg>
+              </div>
+              <h3 class="font-bold text-base mb-2">専用キャリングケース付属</h3>
+              <p class="text-sm text-gray-300 text-center">第一ロット製造分には、カスタムフォーム入りの高級キャリングケースが付属し、大切な機器を保護します。</p>
+            </div>
+          </div>
+          <p class="text-center text-gray-400 text-sm max-w-2xl mx-auto mt-8">
+            ALM-01は、精密さとスタイルを追求して設計された薄型のPC専用レバーレスコントローラーです。30mmの薄型プロファイルで、パフォーマンスと携帯性の完璧なバランスを実現しています。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="py-12 px-4 md:px-8 bg-black/30">
+      <div class="max-w-7xl mx-auto">
+        <div class="stats-grid">
+          <div class="stat-item" data-aos="fade-up">
+            <div class="stat-value">0.7ms</div>
+            <p class="text-sm">入力遅延</p>
+          </div>
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-value">30mm</div>
+            <p class="text-sm">ボディ厚</p>
+          </div>
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-value">100%</div>
+            <p class="text-sm">アルミニウム</p>
+          </div>
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-value">∞</div>
+            <p class="text-sm">カスタマイズ性</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Why Leverless -->
-    <!-- TODO -->
+    <section id="details" class="py-20 px-4 md:px-8 relative bg-cover bg-center bg-no-repeat" style="background-image: url('./assets/bg-02.png');">
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+        <div class="space-y-8">
+          <h2 class="text-4xl font-bold gradient-text" data-aos="fade-right">Why Leverless?</h2>
+          <p class="text-lg text-gray-300" data-aos="fade-right" data-aos-delay="100">
+            レバーレスコントローラーは、従来のジョイスティックを超える入力速度と精度を実現します。
+          </p>
+          <ul class="space-y-6" data-aos="fade-right" data-aos-delay="200">
+            <li class="flex items-start space-x-4">
+              <span class="text-[#00ff9d] text-2xl font-bold">01</span>
+              <p class="text-lg">入力遅延を極限まで削減。</p>
+            </li>
+            <li class="flex items-start space-x-4">
+              <span class="text-[#00ff9d] text-2xl font-bold">02</span>
+              <p class="text-lg">30 mm の超薄型ボディがもたらす携帯性。</p>
+            </li>
+            <li class="flex items-start space-x-4">
+              <span class="text-[#00ff9d] text-2xl font-bold">03</span>
+              <p class="text-lg">静音 PWS Blaze ボタンで夜中の練習も快適。</p>
+            </li>
+          </ul>
+        </div>
+        <div class="relative" data-aos="fade-left">
+          <img src="./assets/product-img-02.png" alt="ALM-01 デザイン詳細" class="w-full rounded-lg neon-glow hover-scale">
+        </div>
+      </div>
+    </section>
 
     <!-- GP2040-CE Section -->
-    <!-- TODO -->
+    <section id="specs" class="py-20 px-4 md:px-8 grid-bg">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+          <div data-aos="fade-right">
+            <h2 class="text-4xl font-bold gradient-text">Powered by GP2040-CE</h2>
+            <p class="text-xl text-gray-300 mt-2">次世代ファームウェア</p>
+          </div>
+          <ul class="space-y-6" data-aos="fade-right" data-aos-delay="100">
+            <li class="flex items-center space-x-4">
+              <span class="text-[#00ff9d] text-2xl">✓</span>
+              <p class="text-lg">WEB UI（192.168.7.1）から SOCD・XInput 設定を即変更</p>
+            </li>
+            <li class="flex items-center space-x-4">
+              <span class="text-[#00ff9d] text-2xl">✓</span>
+              <p class="text-lg">0.7 ms 以下のレイテンシー</p>
+            </li>
+            <li class="flex items-center space-x-4">
+              <span class="text-[#00ff9d] text-2xl">✓</span>
+              <p class="text-lg">PC 専用 / Brook WingmanFGC2 で PS5 対応</p>
+            </li>
+          </ul>
+        </div>
+        <div class="relative" data-aos="fade-left">
+          <img src="./assets/gp2040-ce.png" alt="GP2040-CE ボード" class="w-full rounded-lg neon-glow hover-scale">
+        </div>
+      </div>
+    </section>
 
     <!-- Design Details -->
-    <!-- TODO -->
+    <section id="about" class="py-20 px-4 md:px-8">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center gradient-text section-title" data-aos="fade-up">Design Details</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="relative group" data-aos="fade-up">
+            <img src="./assets/product-img-02.png" alt="アルミ加工" class="w-full rounded-lg hover-scale">
+            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+              <p class="text-xl text-center px-4">削り出しアルミ 3 mm ✕ 陽極酸化処理</p>
+            </div>
+          </div>
+          <div class="relative group" data-aos="fade-up" data-aos-delay="100">
+            <img src="./assets/product-img-03.png" alt="USB-C配置" class="w-full rounded-lg hover-scale">
+            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+              <p class="text-xl text-center px-4">USB-C 側面配置 & ケーブルホールでメンテ性向上</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Set‑up Guide -->
-    <!-- TODO -->
+    <section id="setup" class="py-20 px-4 md:px-8 relative min-h-screen overflow-hidden">
+      <div class="setup-bg"></div>
+      <div class="absolute inset-0 bg-black/50 z-10"></div>
+      <div class="max-w-7xl mx-auto relative z-20">
+        <h2 class="text-4xl font-bold mb-12 text-center gradient-text section-title" data-aos="fade-up">Set-up Guide</h2>
+        <div class="flex flex-col gap-16">
+          <div class="flex flex-col items-center" data-aos="fade-up">
+            <h3 class="text-2xl font-bold mb-6">キーバインド</h3>
+            <img src="./assets/setupnote1.png" alt="接続" class="w-full md:w-1/2 h-auto">
+          </div>
+          <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="text-2xl font-bold mb-6">マニュアル設定</h3>
+            <img src="./assets/setupnote2.png" alt="WEB UI" class="w-full md:w-1/2 h-auto">
+          </div>
+          <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="text-2xl font-bold mb-6">モード切替</h3>
+            <img src="./assets/setupnote3.png" alt="プレイ開始" class="w-full md:w-1/2 h-auto">
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Specs Table -->
-    <!-- TODO -->
+    <section class="py-20 px-4 md:px-8 grid-bg">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center gradient-text section-title" data-aos="fade-up">Specifications</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="feature-card p-4" data-aos="fade-up">サイズ</div>
+          <div class="feature-card p-4" data-aos="fade-up">180 × 300 × 30 mm (ボタン除く)</div>
+          <div class="feature-card p-4" data-aos="fade-up" data-aos-delay="50">重量</div>
+          <div class="feature-card p-4" data-aos="fade-up" data-aos-delay="50">約 1.1 kg</div>
+          <div class="feature-card p-4" data-aos="fade-up" data-aos-delay="100">素材</div>
+          <div class="feature-card p-4" data-aos="fade-up" data-aos-delay="100">オールアルミニウム</div>
+          <div class="feature-card p-4" data-aos="fade-up" data-aos-delay="150">ボタン</div>
+          <div class="feature-card p-4" data-aos="fade-up" data-aos-delay="150">PWS Blaze (静音)</div>
+          <div class="feature-card p-4" data-aos="fade-up" data-aos-delay="200">端子</div>
+          <div class="feature-card p-4" data-aos="fade-up" data-aos-delay="200">USB-C</div>
+          <div class="feature-card p-4" data-aos="fade-up" data-aos-delay="250">付属品</div>
+          <div class="feature-card p-4" data-aos="fade-up" data-aos-delay="250">キャリングケース (初回)</div>
+        </div>
+      </div>
+    </section>
 
     <!-- Voice of Players -->
-    <!-- TODO -->
+    <section id="voice" class="py-20 px-4 md:px-8 relative" style="background: url('assets/bg-07.png') center center / cover no-repeat;">
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="max-w-7xl mx-auto relative z-10">
+        <h2 class="text-4xl font-bold mb-12 text-center gradient-text section-title" data-aos="fade-up">Voice of Players</h2>
+        <div class="flex flex-wrap justify-center gap-8">
+          <div class="w-full md:w-80 feature-card p-6 rounded-lg" data-aos="fade-up">
+            <blockquote class="text-lg mb-4">「GP2040-CE の低遅延で Drive Impact が見える！」</blockquote>
+            <p class="text-[#00ff9d]">— Diamond リュウ</p>
+          </div>
+          <div class="w-full md:w-80 feature-card p-6 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+            <blockquote class="text-lg mb-4">「オールアルミの質感が最高。練習が楽しくなる！」</blockquote>
+            <p class="text-[#00ff9d]">— Master ケン</p>
+          </div>
+          <div class="w-full md:w-80 feature-card p-6 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+            <blockquote class="text-lg mb-4">「静音ボタンで深夜練習も安心。EVO に向けて完璧な相棒です。」</blockquote>
+            <p class="text-[#00ff9d]">— Grand Master 春麗</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- FAQ -->
-    <!-- TODO -->
+    <section id="faq" class="py-20 px-4 md:px-8 relative" style="background: url('assets/bg-03.png') center center / cover no-repeat;">
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="max-w-3xl mx-auto relative z-10">
+        <h2 class="text-4xl font-bold mb-12 text-center gradient-text section-title" data-aos="fade-up">FAQ</h2>
+        <div class="space-y-6">
+          <div class="feature-card p-6 rounded-lg" data-aos="fade-up">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-[#00ff9d]/20 flex items-center justify-center flex-shrink-0">
+                <span class="text-[#00ff9d] font-bold">Q</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-4">PS5 で使える？</h3>
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 rounded-full bg-[#00fff7]/20 flex items-center justify-center flex-shrink-0">
+                    <span class="text-[#00fff7] font-bold">A</span>
+                  </div>
+                  <p class="text-gray-300">Brook WingmanFGC2 などのコンバーターをご使用ください。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="feature-card p-6 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-full bg-[#00ff9d]/20 flex items-center justify-center flex-shrink-0">
+                <span class="text-[#00ff9d] font-bold">Q</span>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold mb-4">ボタン交換は？</h3>
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 rounded-full bg-[#00fff7]/20 flex items-center justify-center flex-shrink-0">
+                    <span class="text-[#00fff7] font-bold">A</span>
+                  </div>
+                  <p class="text-gray-300">六角ネジを外して分解し、互換ボタンへ交換可能。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="w-full overflow-hidden">
+      <video class="w-full h-auto" src="./assets/scene1.mp4" autoplay loop muted playsinline></video>
+    </section>
+
+    <style>
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%);
+        }
+        20%, 100% {
+          transform: translateX(100%);
+        }
+      }
+      @keyframes shine-delayed {
+        0% {
+          transform: translateX(-100%);
+        }
+        20%, 100% {
+          transform: translateX(100%);
+        }
+      }
+      .animate-shine {
+        animation: shine 4s infinite;
+      }
+      .animate-shine-delayed {
+        animation: shine-delayed 4s infinite 2s;
+      }
+      .neon-button {
+        background: linear-gradient(45deg, #00ff9d, #00fff7);
+        color: #000;
+        font-weight: bold;
+        border: none;
+        box-shadow: 0 0 30px rgba(0,255,157,0.5);
+        position: relative;
+        overflow: hidden;
+        transition: background 0.3s, color 0.3s;
+      }
+      .neon-button:hover {
+        background: linear-gradient(45deg, #fff, #e0fff7);
+        color: #000 !important;
+      }
+      .neon-button:hover .relative.z-10 {
+        background: none;
+        color: #000;
+        -webkit-text-fill-color: initial;
+        filter: none;
+      }
+    </style>
 
     <!-- CTA -->
-    <!-- TODO -->
+    <section id="buy" class="py-32 px-4 md:px-8 relative overflow-hidden" style="background: linear-gradient(45deg, #000000, #0a0a0a);">
+      <div class="absolute inset-0 bg-[url('assets/bg-07.png')] opacity-80"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#00ff9d]/10 to-[#00fff7]/10"></div>
+      <div class="max-w-4xl mx-auto text-center relative z-10">
+        <h2 class="text-5xl md:text-7xl font-bold mb-8 hero-text section-title animate-float leading-normal md:leading-normal" data-aos="fade-up" style="text-shadow: 0 0 20px rgba(0,255,157,0.5);">
+          Ready for<br class="md:hidden"> EVO?
+        </h2>
+        <p class="text-2xl md:text-3xl mb-12 text-gray-200 font-medium tracking-wider leading-relaxed md:leading-normal" data-aos="fade-up" data-aos-delay="100" style="letter-spacing: 0.1em;">
+          世界大会仕様の<br class="md:hidden">入力速度を、<br class="md:hidden">今すぐ体感しよう。
+        </p>
+        <a href="https://jp.mercari.com/item/m51804968728" class="neon-button inline-block text-xl md:text-2xl px-24 py-6 transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="200" style="clip-path: polygon(0 50%, 8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%);">
+          <span class="relative z-10">購入はこちら</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/80 to-transparent -translate-x-full animate-shine"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full animate-shine-delayed"></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- C.O.H.について -->
+    <section id="coh" class="py-20 px-4 md:px-8 bg-black/40">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-8 gradient-text section-title">About C.O.H.</h2>
+        <img src="./assets/bg-05.png" alt="C.O.H. ワークショップ" class="w-full max-w-2xl mx-auto mb-8 rounded-lg">
+        <p class="text-base md:text-lg text-gray-200 leading-loose mb-6">
+          C.O.H.（Craft of Hardware）は、格闘ゲームを愛するエンジニア・デザイナーによる日本発のガレージブランドです。<br>
+          「最高の入力体験を、すべてのプレイヤーに」を理念に、手作業による高品質なコントローラーを少量生産でお届けしています。
+        </p>
+        <p class="text-base text-gray-400 leading-loose mb-2">
+          すべての製品は国内工房で設計・組立・検品され、プロプレイヤーや音楽家のフィードバックを反映。技術と美しさを両立した唯一無二のデザインを追求しています。
+        </p>
+        <p class="text-base text-gray-400 leading-loose mt-8">
+          ご質問・ご要望は <a href="mailto:info@coh-controllers.com" class="underline text-[#00ff9d]">info@coh-controllers.com</a> までお気軽にご連絡ください。
+        </p>
+      </div>
+    </section>
+
+    <footer class="bg-[#0b1018] border-t border-[#23263a] pt-10 pb-4 px-4 text-gray-400 text-sm mt-16">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <div class="flex flex-col gap-2">
+          <a href="index.html" class="text-[#00fff7] font-extrabold text-2xl tracking-widest mb-1" style="font-family: 'Orbitron', 'Inter', 'Noto Sans JP', sans-serif;">C.O.H.</a>
+          <span class="text-xs text-gray-400">Precision controllers for discerning players</span>
+        </div>
+        <div class="flex gap-4 mt-2 md:mt-0">
+          <a href="#" class="w-9 h-9 rounded-full bg-[#23263a] flex items-center justify-center hover:bg-[#00ff9d]/20 transition" aria-label="X(Twitter)">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7l10 10M17 7L7 17"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-[#23263a] flex items-center justify-center hover:bg-[#00ff9d]/20 transition" aria-label="Instagram">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r="1.5"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-[#23263a] flex items-center justify-center hover:bg-[#00ff9d]/20 transition" aria-label="YouTube">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="4"/><path d="M10 9.5v5l4-2.5-4-2.5z"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-[#23263a] flex items-center justify-center hover:bg-[#00ff9d]/20 transition" aria-label="Discord">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="6"/><circle cx="8.5" cy="12" r="1.5"/><circle cx="15.5" cy="12" r="1.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <hr class="my-6 border-[#23263a]" />
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs">
+        <div>© 2025 Chiyoman Open Hands. All rights reserved.</div>
+        <div class="flex gap-4">
+          <a href="#" class="hover:text-[#00ff9d] transition">Privacy Policy</a>
+          <a href="#" class="hover:text-[#00ff9d] transition">Terms of Service</a>
+          <a href="#" class="hover:text-[#00ff9d] transition">Contact</a>
+        </div>
+      </div>
+    </footer>
 
     <script>
-      // Optional JS can be added here
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+      });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        // ページトップに戻るボタン
+        const backToTop = document.getElementById('backToTop');
+        if (backToTop) {
+          backToTop.addEventListener('click', () => {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          });
+        }
+
+        // FAQアコーディオン
+        const details = document.querySelectorAll('#faq details');
+        
+        details.forEach(detail => {
+          const summary = detail.querySelector('summary');
+          
+          summary.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // クリックされたdetails以外を閉じる
+            details.forEach(otherDetail => {
+              if (otherDetail !== detail) {
+                otherDetail.removeAttribute('open');
+              }
+            });
+            
+            // クリックされたdetailsの開閉を切り替え
+            detail.toggleAttribute('open');
+          });
+        });
+
+        // モバイルメニュー開閉
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        function openMenu() {
+          mobileMenu.classList.remove('hidden');
+          setTimeout(() => {
+            document.addEventListener('click', clickOutsideMenu);
+          }, 10);
+        }
+        function closeMenu() {
+          mobileMenu.classList.add('hidden');
+          document.removeEventListener('click', clickOutsideMenu);
+        }
+        function clickOutsideMenu(e) {
+          if (!mobileMenu.contains(e.target) && e.target !== menuBtn) {
+            closeMenu();
+          }
+        }
+        if(menuBtn && mobileMenu) {
+          menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openMenu();
+          });
+        }
+
+        // モバイルメニュー内リンクのアンカー遷移後にメニューを閉じる
+        document.querySelectorAll('.menu-link').forEach(link => {
+          link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+              e.preventDefault();
+              const target = document.querySelector(href);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+              }
+              setTimeout(() => {
+                closeMenu();
+                if (target) {
+                  // フォーカスを当ててアクセシビリティ向上
+                  target.setAttribute('tabindex', '-1');
+                  target.focus();
+                }
+              }, 400);
+            } else {
+              closeMenu();
+            }
+          });
+        });
+      });
+
+      // Quick Stats用のパーティクルエフェクト
+      particlesJS('stats-particles', {
+        particles: {
+          number: {
+            value: 40,
+            density: {
+              enable: true,
+              value_area: 800
+            }
+          },
+          color: {
+            value: '#00ffff'
+          },
+          shape: {
+            type: 'circle'
+          },
+          opacity: {
+            value: 0.3,
+            random: true
+          },
+          size: {
+            value: 2,
+            random: true
+          },
+          line_linked: {
+            enable: true,
+            distance: 100,
+            color: '#00ffff',
+            opacity: 0.1,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 1,
+            direction: 'none',
+            random: true,
+            straight: false,
+            out_mode: 'out',
+            bounce: false
+          }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: {
+            onhover: {
+              enable: true,
+              mode: 'grab'
+            },
+            resize: true
+          },
+          modes: {
+            grab: {
+              distance: 100,
+              line_linked: {
+                opacity: 0.2
+              }
+            }
+          }
+        },
+        retina_detect: true
+      });
     </script>
   </body>
 </html> 
