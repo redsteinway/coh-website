@@ -1,0 +1,11 @@
+{
+  "name": "coh-website-tests",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/backToTop.spec.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^21.3.8"
+  }
+} 

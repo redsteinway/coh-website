@@ -8,6 +8,19 @@
 - レバーレスコントローラーに興味のある方
 - 高品質なゲーミングギアを求める方
 
+## 開発環境のセットアップ
+
+1. リポジトリのクローン
+```bash
+git clone https://github.com/redsteinway/coh-website.git
+cd coh-website
+```
+
+2. 依存関係のインストール
+```bash
+npm install
+```
+
 ## ローカルプレビュー方法
 
 以下のいずれかの方法でローカルプレビューが可能です：
@@ -28,9 +41,19 @@ python3 -m http.server 8000
 ```
 /COH-WEBSITE
 ├── index.html          # ALM-01のランディングページ
-├── assets/            # 画像ファイル
-└── README.md          # 本ファイル
+├── assets/            # スタイルシートと画像ファイル
+│   └── global.css     # グローバルスタイル
+├── tests/             # テストファイル
+├── package.json       # プロジェクト設定
+├── .gitignore        # Git除外設定
+└── README.md         # 本ファイル
 ```
+
+## テスト
+
+プロジェクトには以下のテストが含まれています：
+- スクロールトップ機能のテスト
+- デバッグ用の各種ユーティリティ
 
 ## 今後の拡張について
 
@@ -44,7 +67,13 @@ python3 -m http.server 8000
 │   └── alm-02/
 │       └── index.html
 ├── assets/
+├── tests/
 └── README.md
 ```
 
-将来的には、AstroやNext.js（Static Export）への移行を検討し、共通コンポーネントの再利用性を高める予定です。 
+将来的には、AstroやNext.js（Static Export）への移行を検討し、共通コンポーネントの再利用性を高める予定です。
+
+## バージョン情報
+
+- 現在のバージョン: 1.0
+- 初回リリース: 2025年6月15日 
