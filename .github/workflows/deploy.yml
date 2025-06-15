@@ -20,6 +20,10 @@ jobs:
           cp index.html dist/
           mkdir -p dist/assets
           touch dist/assets/main-img.png
+          echo "=== Contents of dist directory ==="
+          ls -la dist/
+          echo "=== Contents of dist/assets directory ==="
+          ls -la dist/assets/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
