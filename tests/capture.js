@@ -1,0 +1,10 @@
+import puppeteer from 'puppeteer';
+import path from 'node:path';
+const browser=await puppeteer.launch({headless:'new'});
+const page = await browser.newPage();
+await page.goto('file://'+path.resolve('index.html'));
+await page.screenshot({path: 'screenshot-top.png', fullPage: false});
+await page.evaluate(()=>window.scrollTo(0,document.body.scrollHeight));
+await page.waitForTimeout(1000);
+await page.screenshot({path: 'screenshot-bottom.png', fullPage:false});
+await browser.close(); 

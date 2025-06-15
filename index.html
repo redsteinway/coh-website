@@ -18,18 +18,20 @@
     <link rel="stylesheet" href="assets/global.css">
   </head>
   <body class="bg-[#0e0e0f] text-white antialiased">
-    <!-- ページ最上部へ戻るボタン -->
-    <button id="backToTop" aria-label="ページ最上部へ戻る" class="back-to-top" style="display: flex !important; opacity: 1 !important; visibility: visible !important;">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
-      </svg>
-    </button>
+    <!-- フローティング UI レイヤー -->
+    <div id="ui-layer">
+      <button id="backToTop" aria-label="ページ最上部へ戻る" class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+        </svg>
+      </button>
+    </div>
 
     <!-- グローバルナビゲーション -->
     <header class="fixed top-0 left-0 w-full z-50 bg-black/70 backdrop-blur-md border-b border-[#222]">
       <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 py-3">
         <div class="flex items-center gap-2">
-          <span class="text-[#00fff7] font-extrabold text-2xl tracking-widest" style="font-family: 'Orbitron', 'Inter', 'Noto Sans JP', sans-serif;">C.O.H.</span>
+          <a href="index.html" class="text-[#00fff7] font-extrabold text-2xl tracking-widest" style="font-family: 'Orbitron', 'Inter', 'Noto Sans JP', sans-serif;">C.O.H.</a>
         </div>
         <ul class="hidden md:flex gap-8 text-base font-semibold">
           <li><a href="#features" class="hover:text-[#00ff9d] transition">特徴</a></li>
@@ -80,7 +82,7 @@
         </div>
         <!-- 右：商品画像 -->
         <div class="w-full md:w-1/2 flex justify-center items-center">
-          <img src="./assets/main-img.png" alt="ALM-01 商品画像" class="w-full md:max-w-2xl drop-shadow-2xl neon-glow" style="aspect-ratio: 4/3; object-fit: contain; background:rgba(0,0,0,0.2); border-radius:1.2rem;" data-aos="zoom-in" />
+          <img src="./assets/main-img.png" alt="ALM-01 商品画像" class="w-full md:max-w-3xl drop-shadow-2xl neon-glow" data-aos="zoom-in" />
         </div>
       </div>
       <div class="scroll-indicator z-30">
@@ -371,9 +373,59 @@
       </div>
     </section>
 
+    <!-- Video Section -->
+    <section class="w-full overflow-hidden">
+      <video class="w-full h-auto" src="./assets/scene1.mp4" autoplay loop muted playsinline></video>
+    </section>
+
+    <style>
+      @keyframes shine {
+        0% {
+          transform: translateX(-100%);
+        }
+        20%, 100% {
+          transform: translateX(100%);
+        }
+      }
+      @keyframes shine-delayed {
+        0% {
+          transform: translateX(-100%);
+        }
+        20%, 100% {
+          transform: translateX(100%);
+        }
+      }
+      .animate-shine {
+        animation: shine 4s infinite;
+      }
+      .animate-shine-delayed {
+        animation: shine-delayed 4s infinite 2s;
+      }
+      .neon-button {
+        background: linear-gradient(45deg, #00ff9d, #00fff7);
+        color: #000;
+        font-weight: bold;
+        border: none;
+        box-shadow: 0 0 30px rgba(0,255,157,0.5);
+        position: relative;
+        overflow: hidden;
+        transition: background 0.3s, color 0.3s;
+      }
+      .neon-button:hover {
+        background: linear-gradient(45deg, #fff, #e0fff7);
+        color: #000 !important;
+      }
+      .neon-button:hover .relative.z-10 {
+        background: none;
+        color: #000;
+        -webkit-text-fill-color: initial;
+        filter: none;
+      }
+    </style>
+
     <!-- CTA -->
     <section id="buy" class="py-32 px-4 md:px-8 relative overflow-hidden" style="background: linear-gradient(45deg, #000000, #0a0a0a);">
-      <div class="absolute inset-0 bg-[url('assets/bg-07.png')] opacity-20 animate-pulse"></div>
+      <div class="absolute inset-0 bg-[url('assets/bg-07.png')] opacity-80"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-[#00ff9d]/10 to-[#00fff7]/10"></div>
       <div class="max-w-4xl mx-auto text-center relative z-10">
         <h2 class="text-5xl md:text-7xl font-bold mb-8 hero-text section-title animate-float leading-normal md:leading-normal" data-aos="fade-up" style="text-shadow: 0 0 20px rgba(0,255,157,0.5);">
@@ -382,8 +434,10 @@
         <p class="text-2xl md:text-3xl mb-12 text-gray-200 font-medium tracking-wider leading-relaxed md:leading-normal" data-aos="fade-up" data-aos-delay="100" style="letter-spacing: 0.1em;">
           世界大会仕様の<br class="md:hidden">入力速度を、<br class="md:hidden">今すぐ体感しよう。
         </p>
-        <a href="https://jp.mercari.com/item/m51804968728" class="neon-button inline-block text-xl md:text-2xl px-12 py-6 rounded-xl transform hover:scale-105 transition-all duration-300 animate-pulse" data-aos="fade-up" data-aos-delay="200" style="background: linear-gradient(45deg, #00ff9d, #00fff7); color: #000; font-weight: bold; border: none; box-shadow: 0 0 30px rgba(0,255,157,0.5);">
-          購入はこちら
+        <a href="https://jp.mercari.com/item/m51804968728" class="neon-button inline-block text-xl md:text-2xl px-24 py-6 transform hover:scale-105 transition-all duration-300" data-aos="fade-up" data-aos-delay="200" style="clip-path: polygon(0 50%, 8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%);">
+          <span class="relative z-10">購入はこちら</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/80 to-transparent -translate-x-full animate-shine"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full animate-shine-delayed"></div>
         </a>
       </div>
     </section>
@@ -392,6 +446,7 @@
     <section id="coh" class="py-20 px-4 md:px-8 bg-black/40">
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-4xl font-bold mb-8 gradient-text section-title">About C.O.H.</h2>
+        <img src="./assets/bg-05.png" alt="C.O.H. ワークショップ" class="w-full max-w-2xl mx-auto mb-8 rounded-lg">
         <p class="text-base md:text-lg text-gray-200 leading-loose mb-6">
           C.O.H.（Craft of Hardware）は、格闘ゲームを愛するエンジニア・デザイナーによる日本発のガレージブランドです。<br>
           「最高の入力体験を、すべてのプレイヤーに」を理念に、手作業による高品質なコントローラーを少量生産でお届けしています。
@@ -408,7 +463,7 @@
     <footer class="bg-[#0b1018] border-t border-[#23263a] pt-10 pb-4 px-4 text-gray-400 text-sm mt-16">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
         <div class="flex flex-col gap-2">
-          <span class="text-[#00fff7] font-extrabold text-2xl tracking-widest mb-1" style="font-family: 'Orbitron', 'Inter', 'Noto Sans JP', sans-serif;">C.O.H.</span>
+          <a href="index.html" class="text-[#00fff7] font-extrabold text-2xl tracking-widest mb-1" style="font-family: 'Orbitron', 'Inter', 'Noto Sans JP', sans-serif;">C.O.H.</a>
           <span class="text-xs text-gray-400">Precision controllers for discerning players</span>
         </div>
         <div class="flex gap-4 mt-2 md:mt-0">
@@ -448,10 +503,6 @@
         // ページトップに戻るボタン
         const backToTop = document.getElementById('backToTop');
         if (backToTop) {
-          // ボタンを常に表示
-          backToTop.style.display = 'flex';
-          
-          // クリックイベント
           backToTop.addEventListener('click', () => {
             window.scrollTo({
               top: 0,
