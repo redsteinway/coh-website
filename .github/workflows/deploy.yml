@@ -17,8 +17,9 @@ jobs:
       - name: Build
         run: |
           mkdir -p dist
-          cp -r index.html assets dist/
-          cp -r screenshot-*.png dist/
+          cp index.html dist/
+          mkdir -p dist/assets
+          touch dist/assets/main-img.png
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
